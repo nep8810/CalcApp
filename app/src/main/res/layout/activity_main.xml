@@ -39,12 +39,14 @@
 
 
         <EditText
+            android:inputType="number|numberSigned|numberDecimal"
             android:id="@+id/editText1"
             android:layout_below="@+id/button1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <EditText
+            android:inputType="number|numberSigned|numberDecimal"
             android:id="@+id/editText2"
             android:layout_below="@+id/editText1"
             android:layout_width="match_parent"
