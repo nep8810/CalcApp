@@ -11,7 +11,8 @@ import android.support.v4.app.SupportActivity
 import android.support.v4.app.SupportActivity.ExtraData
 import android.support.v4.content.ContextCompat.getSystemService
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
-
+import com.example.calcapp.R.id
+import kotlinx.android.synthetic.main.activity_second.*
 
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
@@ -27,14 +28,23 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         button4.setOnClickListener(this)
     }
 
-    //onClickメソッドでSecondActivityに遷移させる
+//onClickメソッドでSecondActivityに遷移させる
     override fun onClick(v: View?) {
         //Intentのインスタンスを生成
         //コンストラクタの第一引数はcontextなのでActivity自身,第2引数は遷移させたいActivityのクラスを指定
         val intent = Intent(this, SecondActivity::class.java)
 
-        intent.putExtra("VALUE1",  "@+id/editText1")
-        intent.putExtra("VALUE2", "@+id/editText2")
+             intent.putExtra("VALUE1", editText1.text)
+             intent.putExtra("VALUE2", editText2.text)
+
+         when(id) {
+             id.button1 -> textView.text = textView1.text
+             id.button2 -> textView.text = textView2.text
+             id.button3 -> textView.text = textView3.text
+             id.button4 -> textView.text = textView4.text
+
+            else -> textView.text = "何か数値を入力してください"
+        }
 
         //生成したIntentを引数にしてstartActivityメソッドを呼び出すことで遷移
         startActivity(intent)

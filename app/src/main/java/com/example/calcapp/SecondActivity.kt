@@ -12,18 +12,13 @@ class SecondActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
 
-        val value1 = intent.getIntExtra("VALUE1",  0)
-        val value2 = intent.getIntExtra("VALUE2", 0)
+        val value1 = intent.getFloatExtra("VALUE1", 0F)
+        val value2 = intent.getFloatExtra("VALUE2", 0F)
 
-
-        when(R.id){
-            R.id.button1 -> textView.text = "${value1 + value2}"
-            R.id.button2 -> textView.text = "${value1 - value2}"
-            R.id.button3 -> textView.text = "${value1 * value2}"
-            R.id.button4-> textView.text = "${value1 / value2}"
-            else -> textView.text ="何か数値を入力してください"
-
-        }
-
+        textView1.text = "${value1 + value2}"
+        textView2.text = "${value1 - value2}"
+        textView3.text = "${value1 * value2}"
+        textView4.text = "${value1 / value2}"
     }
 }
+
