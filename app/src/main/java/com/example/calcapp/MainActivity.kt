@@ -11,7 +11,7 @@ import android.support.v4.app.SupportActivity
 import android.support.v4.app.SupportActivity.ExtraData
 import android.support.v4.content.ContextCompat.getSystemService
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
-import com.example.calcapp.R.id
+import com.example.calcapp.R
 import kotlinx.android.synthetic.main.activity_second.*
 
 
@@ -37,11 +37,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
              intent.putExtra("VALUE1", editText1.text)
              intent.putExtra("VALUE2", editText2.text)
 
-         when(id) {
-             id.button1 -> textView.text = textView1.text
-             id.button2 -> textView.text = textView2.text
-             id.button3 -> textView.text = textView3.text
-             id.button4 -> textView.text = textView4.text
+         when(R.id) {
+             R.id.button1 -> textView.text = textView1.text
+             R.id.button2 -> textView.text = textView2.text
+             R.id.button3 -> textView.text = textView3.text
+             R.id.button4 -> textView.text = textView4.text
 
             else -> textView.text = "何か数値を入力してください"
         }
