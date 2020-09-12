@@ -18,14 +18,10 @@ import kotlin.String.Companion as String
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // EditTextの文字列を取得し、数値に変換
-        val A = editText1.text.toString().toDouble()
-        val B = editText2.text.toString().toDouble()
 
         button1.setOnClickListener(this)
         button2.setOnClickListener(this)
@@ -40,6 +36,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         val intent = Intent(this, SecondActivity::class.java)
 
          when(v?.id){
+
              R.id.button1 -> intent.putExtra{"VALUE", (A + B)}
              R.id.button2 -> intent.putExtra{"VALUE", (A - B)}
              R.id.button3 -> intent.putExtra{"VALUE", (A * B)}
