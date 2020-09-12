@@ -13,6 +13,7 @@ import android.support.v4.content.ContextCompat.getSystemService
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import com.example.calcapp.R
 import kotlinx.android.synthetic.main.activity_second.*
+import kotlin.String.Companion as String
 
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
@@ -21,6 +22,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        // EditTextの文字列を取得し、数値に変換
+        val A = editText1.text.toString().toDouble()
+        val B = editText2.text.toString().toDouble()
 
         button1.setOnClickListener(this)
         button2.setOnClickListener(this)
@@ -34,14 +39,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         //コンストラクタの第一引数はcontextなのでActivity自身,第2引数は遷移させたいActivityのクラスを指定
         val intent = Intent(this, SecondActivity::class.java)
 
-             intent.putExtra("VALUE1", editText1.text)
-             intent.putExtra("VALUE2", editText2.text)
-
-         when(R.id) {
-             R.id.button1 -> textView.text = textView1.text
-             R.id.button2 -> textView.text = textView2.text
-             R.id.button3 -> textView.text = textView3.text
-             R.id.button4 -> textView.text = textView4.text
+         when(v?.id){
+             R.id.button1 -> intent.putExtra{"VALUE", (A + B)}
+             R.id.button2 -> intent.putExtra{"VALUE", (A - B)}
+             R.id.button3 -> intent.putExtra{"VALUE", (A * B)}
+             R.id.button4 -> intent.putExtra{"VALUE", (A / B)}
 
             else -> textView.text = "何か数値を入力してください"
         }
