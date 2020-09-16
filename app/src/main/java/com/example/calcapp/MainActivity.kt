@@ -11,9 +11,14 @@ import android.support.v4.app.SupportActivity
 import android.support.v4.app.SupportActivity.ExtraData
 import android.support.v4.content.ContextCompat.getSystemService
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import android.renderscript.Sampler
+import android.support.v7.app.AlertDialog
+import android.text.TextUtils.isEmpty
 import com.example.calcapp.R
 import kotlinx.android.synthetic.main.activity_second.*
 import kotlin.String.Companion as String
+import android.widget.Toast
+import android.widget.Toast.makeText
 
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
@@ -21,12 +26,23 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        setContentView(R.layout.editor_layout)
 
         button1.setOnClickListener(this)
+        editText1.toString() == ""|| editText2.toString() == ""
+        -> makeText(this, "数値が入力されていません!!", Toast.LENGTH_SHORT).show()
+
         button2.setOnClickListener(this)
+        editText1.toString() == ""|| editText2.toString() == ""
+        -> makeText(this, "数値が入力されていません!!", Toast.LENGTH_SHORT).show()
+
         button3.setOnClickListener(this)
+        editText1.toString() == ""|| editText2.toString() == ""
+        -> makeText(this, "数値が入力されていません!!", Toast.LENGTH_SHORT).show()
+
         button4.setOnClickListener(this)
+        editText1.toString() == ""|| editText2.toString() == ""
+        -> makeText(this, "数値が入力されていません!!", Toast.LENGTH_SHORT).show()
     }
 
 //onClickメソッドでSecondActivityに遷移させる
@@ -45,7 +61,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
              R.id.button3 -> intent.putExtra("VALUE", (A * B))
              R.id.button4 -> intent.putExtra("VALUE", (A / B))
 
-            else -> textView.text = "何か数値を入力してください"
+             else -> textView.text = "エラー"
         }
 
         //生成したIntentを引数にしてstartActivityメソッドを呼び出すことで遷移
