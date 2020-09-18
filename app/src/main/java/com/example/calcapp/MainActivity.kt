@@ -14,11 +14,14 @@ import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.renderscript.Sampler
 import android.support.v7.app.AlertDialog
 import android.text.TextUtils.isEmpty
+import android.widget.Button
 import com.example.calcapp.R
 import kotlinx.android.synthetic.main.activity_second.*
 import kotlin.String.Companion as String
 import android.widget.Toast
 import android.widget.Toast.makeText
+import android.support.v4.content.ContextCompat.getSystemService
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
@@ -28,21 +31,15 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         setContentView(R.layout.activity_main)
         setContentView(R.layout.editor_layout)
 
-        button1.setOnClickListener(this)
-        editText1.toString() == ""|| editText2.toString() == ""
-        -> makeText(this, "数値が入力されていません!!", Toast.LENGTH_SHORT).show()
-
-        button2.setOnClickListener(this)
-        editText1.toString() == ""|| editText2.toString() == ""
-        -> makeText(this, "数値が入力されていません!!", Toast.LENGTH_SHORT).show()
-
-        button3.setOnClickListener(this)
-        editText1.toString() == ""|| editText2.toString() == ""
-        -> makeText(this, "数値が入力されていません!!", Toast.LENGTH_SHORT).show()
-
-        button4.setOnClickListener(this)
-        editText1.toString() == ""|| editText2.toString() == ""
-        -> makeText(this, "数値が入力されていません!!", Toast.LENGTH_SHORT).show()
+        // ID:各buttonにbtn1～4という名前を割当
+        val btn1 = this.findViewById(R.id.button1) as Button
+        if (btn1 != null){btn1.setOnClickListener(this)}
+        val btn2 = this.findViewById(R.id.button2) as Button
+        if (btn2 != null){btn2.setOnClickListener(this)}
+        val btn3 = this.findViewById(R.id.button3) as Button
+        if (btn3 != null){btn3.setOnClickListener(this)}
+        val btn4 = this.findViewById(R.id.button4) as Button
+        if (btn4 != null){btn4.setOnClickListener(this)}
     }
 
 //onClickメソッドでSecondActivityに遷移させる
@@ -51,21 +48,24 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         //コンストラクタの第一引数はcontextなのでActivity自身,第2引数は遷移させたいActivityのクラスを指定
         val intent = Intent(this, SecondActivity::class.java)
 
-          //EditTextの文字列を取得し、数値に変換
-          val A = editText1.text.toString().toDouble()
-          val B = editText2.text.toString().toDouble()
 
-         when(v?.id){
-             R.id.button1 -> intent.putExtra("VALUE", (A + B))
-             R.id.button2 -> intent.putExtra("VALUE", (A - B))
-             R.id.button3 -> intent.putExtra("VALUE", (A * B))
-             R.id.button4 -> intent.putExtra("VALUE", (A / B))
+              //EditTextの文字列を取得し、数値に変換
+              val A = editText1.text.toString().toDouble()
+              val B = editText2.text.toString().toDouble()
 
-             else -> textView.text = "エラー"
-        }
+              if (A.toString() == ""|| B.toString() == ""){
+                 makeText(this, "数値が入力されていません!!", Toast.LENGTH_SHORT).show()}
+                  else {
 
+                when (v?.id) {
+                  R.id.button1 -> intent.putExtra("VALUE", (A + B))
+                  R.id.button2 -> intent.putExtra("VALUE", (A - B))
+                  R.id.button3 -> intent.putExtra("VALUE", (A * B))
+                  R.id.button4 -> intent.putExtra("VALUE", (A / B))
+
+                }
+              }
         //生成したIntentを引数にしてstartActivityメソッドを呼び出すことで遷移
         startActivity(intent)
     }
 }
-

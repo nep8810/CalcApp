@@ -4,8 +4,10 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.view.View
 import kotlinx.android.synthetic.main.activity_second.*
-
+import android.widget.Toast
+import android.widget.Toast.makeText
 class SecondActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
