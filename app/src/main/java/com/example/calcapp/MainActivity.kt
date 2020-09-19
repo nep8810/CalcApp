@@ -29,17 +29,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        setContentView(R.layout.editor_layout)
 
         // ID:各buttonにbtn1～4という名前を割当
-        val btn1 = this.findViewById(R.id.button1) as Button
-        if (btn1 != null){btn1.setOnClickListener(this)}
-        val btn2 = this.findViewById(R.id.button2) as Button
-        if (btn2 != null){btn2.setOnClickListener(this)}
-        val btn3 = this.findViewById(R.id.button3) as Button
-        if (btn3 != null){btn3.setOnClickListener(this)}
-        val btn4 = this.findViewById(R.id.button4) as Button
-        if (btn4 != null){btn4.setOnClickListener(this)}
+        val btn1 = this.findViewById(R.id.button1) as Button;btn1.setOnClickListener(this)
+        val btn2 = this.findViewById(R.id.button2) as Button;btn2.setOnClickListener(this)
+        val btn3 = this.findViewById(R.id.button3) as Button;btn3.setOnClickListener(this)
+        val btn4 = this.findViewById(R.id.button4) as Button;btn4.setOnClickListener(this)
+
     }
 
 //onClickメソッドでSecondActivityに遷移させる
@@ -53,8 +49,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
               val A = editText1.text.toString().toDouble()
               val B = editText2.text.toString().toDouble()
 
-              if (A.toString() == ""|| B.toString() == ""){
+              if (A.equals("")== true){
                  makeText(this, "数値が入力されていません!!", Toast.LENGTH_SHORT).show()}
+                  else if (B.equals("")== true){
+                  makeText(this, "数値が入力されていません!!", Toast.LENGTH_SHORT).show()}
                   else {
 
                 when (v?.id) {
@@ -64,7 +62,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                   R.id.button4 -> intent.putExtra("VALUE", (A / B))
 
                 }
-              }
+               }
         //生成したIntentを引数にしてstartActivityメソッドを呼び出すことで遷移
         startActivity(intent)
     }
