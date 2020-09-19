@@ -44,16 +44,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         //コンストラクタの第一引数はcontextなのでActivity自身,第2引数は遷移させたいActivityのクラスを指定
         val intent = Intent(this, SecondActivity::class.java)
 
-
-              //EditTextの文字列を取得し、数値に変換
-              val A = editText1.text.toString().toDouble()
-              val B = editText2.text.toString().toDouble()
-
-              if (A.equals("")== true){
+              if (editText1.equals("")== true){
                  makeText(this, "数値が入力されていません!!", Toast.LENGTH_SHORT).show()}
-                  else if (B.equals("")== true){
+                  else if (editText2.equals("")== true){
                   makeText(this, "数値が入力されていません!!", Toast.LENGTH_SHORT).show()}
                   else {
+
+                  //EditTextの文字列を取得し、数値に変換
+                  val A = editText1.text.toString().toDouble()
+                  val B = editText2.text.toString().toDouble()
+
 
                 when (v?.id) {
                   R.id.button1 -> intent.putExtra("VALUE", (A + B))
