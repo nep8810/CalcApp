@@ -44,9 +44,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         //コンストラクタの第一引数はcontextなのでActivity自身,第2引数は遷移させたいActivityのクラスを指定
         val intent = Intent(this, SecondActivity::class.java)
 
-              if (editText1.equals("")== true){
+              if (editText1.text.isEmpty()){
                  makeText(this, "数値が入力されていません!!", Toast.LENGTH_SHORT).show()}
-                  else if (editText2.equals("")== true){
+                  else if (editText2.text.isEmpty()){
                   makeText(this, "数値が入力されていません!!", Toast.LENGTH_SHORT).show()}
                   else {
 
